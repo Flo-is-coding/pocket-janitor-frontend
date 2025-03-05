@@ -2,7 +2,7 @@ name: CI/CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "fix-deployment" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
@@ -25,13 +25,6 @@ jobs:
 
       - name: Build erstellen
         run: npm run build
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Repository auschecken
-        uses: actions/checkout@v4
 
       - name: Deployment zu GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
